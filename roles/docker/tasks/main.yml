@@ -1,13 +1,46 @@
 ---
+
+## installing docker and all dependencies 
+
 - name: Install Required System Packages
-    apt:
-      pkg:
-        - apt-transport-https
-        - ca-certificates
-        - curl
-        - software-properties-common
-        - python3-pip
-        - virtualenv
-        - python3-setuptools
-      state: latest 
-      update_cache: true  
+  apt:
+    pkg:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - software-properties-common
+      - python3-pip
+      - virtualenv
+      - python3-setuptools
+    state: latest 
+    update_cache: true  
+
+- name: Adding docker GPG apt Key
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present 
+
+- name: Adding docker Repository 
+  apt_repository:
+    repo: deb https://download.docker.com/linux/ubuntu focal stable
+    state: present
+
+- name: Update Repositorys 
+  apt:
+    update_cache: true
+
+- name: apt update and install docker-ce
+  apt:  
+    name: docker-ce
+    state: latest 
+    update_cache: true
+
+#  - name: apt update and install all docker Packages
+#  apt:  
+#    name: 
+#      - docker-ce
+#      - docker-ce-cli
+#      - containerd.io
+#      - docker-compose-plugin
+#    state: latest 
+#    update_cache: true 

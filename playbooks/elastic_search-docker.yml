@@ -1,0 +1,18 @@
+---
+
+- host: all 
+  become: true 
+  roles:
+    - docker
+    - 
+
+
+
+  
+
+
+
+ 
+
+
+
