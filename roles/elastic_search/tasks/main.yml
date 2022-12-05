@@ -25,6 +25,6 @@
 
 - debug:
     msg: >
-      Users have to be configured manually. Enable and set the password for the defualt users with: 
-      'docker exec -it {{ elasticsearch_hostname }} /bin/bash -C "elasticsearch-setup-passwords auto"'
-      then edit the 'vaul.yml' file and copy the password values to the expected variable.
+      Users have to be configured manually. Enable and set the password for the defualt users with:
+      'docker exec -it {{ elasticsearch_hostname }} /bin/bash -C "elasticsearch-setup-passwords auto"
+      'then edit the 'vaul.yml' file and copy the password values to the expected variable.
