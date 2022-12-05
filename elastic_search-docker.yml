@@ -3,6 +3,7 @@
 - hosts: all 
   become: true 
   roles:
+    - docker
     - elastic_search
     - kibana
     - logstash
