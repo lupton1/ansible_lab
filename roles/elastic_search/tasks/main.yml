@@ -5,6 +5,10 @@
     name: esdata 
     driver: local
 
+- name: Create Network esnet
+  docker_network:
+    name: "{{ network_name }}"    
+
 - name: Start elastic search container
   docker_container:
     name: "{{ elasticsearch_hostname }}"
