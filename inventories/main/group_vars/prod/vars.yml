@@ -21,5 +21,5 @@ certbot_hostname: cb01
 certbot_conf_dir: /usr/share/certbot
 certbot_email: olross@icloud.com
 
-elastic_password: "{{ vault_elastic_password }}"
-kibana_password: "{{ vault_kibana_password }}"
+elastic_password: "password"
+kibana_password: "password"
