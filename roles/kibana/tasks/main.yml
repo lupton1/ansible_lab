@@ -11,6 +11,8 @@
       ELASTICSEARCH_PASSWORD: "{{ kibana_password }}"
     networks:
     - name: "{{ network_name }}"
+    -ports:
+    - 5601:5601
     log_driver: "{{ log_driver }}"
     log_options:
       max-size: "{{ log_max_size }}"
