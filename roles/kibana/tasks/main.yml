@@ -8,7 +8,7 @@
       servername: "{{ server_name }}"
       ELASTICSEARCH_NAME: "https://{{ elasticsearch_hostname }}:9200"
       ELASTICSEARCH_USERVENE: "kibana"
-      ELASTICSEARCH_PASSWORD: "{{ kabana_password }}"
+      ELASTICSEARCH_PASSWORD: "{{ kibana_password }}"
     networks:
     - name: "{{ network_name }}"
     log_driver: "{{ log_driver }}"
