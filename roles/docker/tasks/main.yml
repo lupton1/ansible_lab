@@ -15,15 +15,25 @@
     state: latest 
     update_cache: true  
 
-#- name: Adding docker GPG apt Key
-#  apt_key:
-#    url: https://download.docker.com/linux/ubuntu/gpg
-#    state: present 
+- name: Adding docker GPG apt Key
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present 
 
 - name: Adding docker Repository 
   apt_repository:
     repo: deb https://download.docker.com/linux/ubuntu focal stable
     state: present
+
+- name: Update apt and install docker-ce
+  apt:
+    name: docker-ce
+    state: latest
+    update_cache: true
+
+- name: install Docker module for python 
+  pip: 
+    name: docker
 
 #- name: Update Repositorys 
 #  apt:
@@ -35,13 +45,13 @@
 #    state: latest 
 #    update_cache: true
 
-- name: apt update and install all docker Packages
-  apt:  
-    name: 
-      - docker-ce
-      - docker-ce-cli
-      - docker.io
-      - containerd.io
-      - docker-compose-plugin
-    state: latest 
-    update_cache: true 
+#- name: apt update and install all docker Packages
+#  apt:  
+#    name: 
+#      - docker-ce
+#      - docker-ce-cli
+#      - docker.io
+#      - containerd.io
+#      - docker-compose-plugin
+#    state: latest 
+#    update_cache: true 
