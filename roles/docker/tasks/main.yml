@@ -20,27 +20,28 @@
 #    url: https://download.docker.com/linux/ubuntu/gpg
 #    state: present 
 
-#- name: Adding docker Repository 
-#  apt_repository:
-#    repo: deb https://download.docker.com/linux/ubuntu focal stable
-#    state: present
+- name: Adding docker Repository 
+  apt_repository:
+    repo: deb https://download.docker.com/linux/ubuntu focal stable
+    state: present
 
 #- name: Update Repositorys 
 #  apt:
 #    update_cache: true
 
-- name: apt update and install docker.io
-  apt:  
-    name: docker.io
-    state: latest 
-    update_cache: true
-
-#  - name: apt update and install all docker Packages
+#- name: apt update and install docker.io
 #  apt:  
-#    name: 
-#      - docker-ce
-#      - docker-ce-cli
-#      - containerd.io
-#      - docker-compose-plugin
+#    name: docker.io
 #    state: latest 
-#    update_cache: true 
+#    update_cache: true
+
+- name: apt update and install all docker Packages
+  apt:  
+    name: 
+      - docker-ce
+      - docker-ce-cli
+      - docker.io
+      - containerd.io
+      - docker-compose-plugin
+    state: latest 
+    update_cache: true 
