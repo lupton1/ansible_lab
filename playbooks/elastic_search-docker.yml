@@ -3,8 +3,8 @@
 - hosts: all 
   become: true 
   roles:
-    -elasticsearch
-    -kibana
-    -logstash
-    -nginx
+    - elasticsearch
+    - kibana
+    - logstash
+    - nginx
 
