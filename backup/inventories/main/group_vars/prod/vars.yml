@@ -19,7 +19,7 @@ logstash_conf_dir: /usr/share/logstash
 certbot_image: certbot/certbot
 certbot_hostname: cb01
 certbot_conf_dir: /usr/share/certbot
-certbot_email: olross@icloud.com
+certbot_email: olross@icloud
 
 elastic_password: "{{ vault_elastic_password }}"
 kibana_password: "{{ vault_kibana_password }}"

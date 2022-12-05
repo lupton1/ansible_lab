@@ -1,0 +1,10 @@
+---
+
+- hosts: all 
+  become: true 
+  roles:
+    - elastic_search
+    - kibana
+    - logstash
+    - nginx
+
