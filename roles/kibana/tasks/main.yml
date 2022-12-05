@@ -3,7 +3,7 @@
 - name: Start kibana container
   docker_container: 
     name: "{{ kibana_hostname }}"
-    image: "{{ Kibana_inage }}"
+    image: "{{ Kibana_image }}"
     env: 
       servername: "{{ server_name }}"
       ELASTICSEARCH_NAME: "https://{{ elasticsearch_hostname }}:9200"
