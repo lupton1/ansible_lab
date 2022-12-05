@@ -19,6 +19,8 @@
       xpack.security.enabled: "true"
     volumes:
     - "esdata:/usr/share/elasticsearch/data"
+    ports:
+    - 9200:9200
     #ulimits:
     #- nofile:655355:65535
     networks:
