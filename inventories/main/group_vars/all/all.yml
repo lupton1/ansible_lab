@@ -1,6 +1,6 @@
-log_driver: "json-file"
-log_max_size: "10m"
-log_max_file: "3"
+#log_driver: "json-file"
+#log_max_size: "10m"
+#log_max_file: "3"
 
 server_name: 192.168.0.5
 network_name: esnet
@@ -23,7 +23,7 @@ logstash_conf_dir: /usr/share/logstash
 certbot_image: certbot/certbot
 certbot_hostname: cb01
 certbot_conf_dir: /usr/share/certbot
-certbot_email: olross@icloud
+certbot_email: olross@icloud.com
 
 elastic_password: "{{ vault_elastic_password }}"
 kibana_password: "{{ vault_kibana_password }}"
