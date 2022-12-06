@@ -1,13 +1,13 @@
 ---
 
 - name: Start kibana container
-  docker_container: 
+  docker_container:
     name: "{{ kibana_hostname }}"
     image: "{{ kibana_image }}"
-    env: 
+    env:
       servername: "{{ server_name }}"
-      ELASTICSEARCH_NAME: "https://{{ elasticsearch_hostname }}:9200"
-      ELASTICSEARCH_USERVENE: "kibana"
+      ELASTICSEARCH_HOSTS: "http://{{ elasticsearch_hostname }}:9200"
+      ELASTICSEARCH_USERNAME: "kibana"
       ELASTICSEARCH_PASSWORD: "{{ kibana_password }}"
     networks:
     - name: "{{ network_name }}"
@@ -17,3 +17,5 @@
     log_options:
       max-size: "{{ log_max_size }}"
       max-file: "{{ log_max_file }}"
+
+
