@@ -16,7 +16,7 @@
     env:
       discovery.type: "single-node"
       ES_JAVA_opts: "-Xms512m"
-      xpack.security.enabled: "true"
+      xpack.security.enabled: "false"
     volumes:
     - "esdata:/usr/share/elasticsearch/data"
     ports:

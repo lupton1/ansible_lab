@@ -7,8 +7,8 @@
     env:
       servername: "{{ server_name }}"
       ELASTICSEARCH_HOSTS: "http://{{ elasticsearch_hostname }}:9200"
-      ELASTICSEARCH_USERNAME: "kibana"
-      ELASTICSEARCH_PASSWORD: "{{ kibana_password }}"
+#      ELASTICSEARCH_USERNAME: "kibana"
+#      ELASTICSEARCH_PASSWORD: "{{ kibana_password }}"
     networks:
     - name: "{{ network_name }}"
     ports:
