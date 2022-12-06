@@ -1,6 +1,7 @@
 ---
 
 ## installing docker and all dependencies 
+#apt update all flag 
 
 - name: Install Required System Packages
   apt:
