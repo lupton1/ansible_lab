@@ -23,7 +23,7 @@
     - 9200:9200
     networks:
     - name: "{{ network_name }}"
-  state: started
+    state: started
 
 # MULTI_NODE  
 
