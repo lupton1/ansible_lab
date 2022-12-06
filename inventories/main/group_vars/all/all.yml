@@ -1,6 +1,4 @@
-#log_driver: "json-file"
-#log_max_size: "10m"
-#log_max_file: "3"
+---
 
 server_name: 192.168.0.5
 network_name: esnet

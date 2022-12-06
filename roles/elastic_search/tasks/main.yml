@@ -5,21 +5,6 @@
     name: esdata 
     driver: local
 
-# - name: Create elastic search volume es01
-#   docker_volume:
-#     name: es01data 
-#     driver: local
-
-# - name: Create elastic search volume es02
-#   docker_volume:
-#     name: es02data 
-#     driver: local
-
-# - name: Create elastic search volume es03
-#   docker_volume:
-#     name: es03data 
-#     driver: local
-
 - name: Create Network esnet
   docker_network:
     name: "{{ network_name }}"    
@@ -40,6 +25,22 @@
     - name: "{{ network_name }}"
   state: started
 
+# MULTI_NODE  
+
+# - name: Create elastic search volume es01
+#   docker_volume:
+#     name: es01data 
+#     driver: local
+
+# - name: Create elastic search volume es02
+#   docker_volume:
+#     name: es02data 
+#     driver: local
+
+# - name: Create elastic search volume es03
+#   docker_volume:
+#     name: es03data 
+#     driver: local
 
 # - name: es01 node 
 #   docker_container: 
@@ -90,9 +91,3 @@
 #     networks:
 #     - name: "{{ network_name }}"
 #     state: started
-
-#- debug:
-#    msg: >
-#      Users have to be configured manually. Enable and set the password for the default users with:
-#      `docker exec -it {{ elasticsearch_hostname }} /bin/bash -c "elasticsearch-setup-passwords auto"`
-#      Then edit the `vaul.yml` file and copy the password values to the expected variable.
