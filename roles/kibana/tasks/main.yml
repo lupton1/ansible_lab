@@ -1,5 +1,7 @@
 ---
 
+# CREATE AND START KIBANA
+
 - name: Start kibana container
   docker_container:
     name: "{{ kibana_hostname }}"

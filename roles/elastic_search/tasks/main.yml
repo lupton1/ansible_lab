@@ -42,6 +42,7 @@
 #     name: es03data 
 #     driver: local
 
+# NODE ONE
 # - name: es01 node 
 #   docker_container: 
 #     name: "es01"
@@ -60,6 +61,7 @@
 #     - name: "{{ network_name }}"
 #     state: started
 
+# NODE TWO
 # - name: es02 node 
 #   docker_container: 
 #     name: "es02"
@@ -76,6 +78,7 @@
 #     - name: "{{ network_name }}"
 #     state: started
 
+# NODE THREE
 # - name: es03 node 
 #   docker_container: 
 #     name: "es03"

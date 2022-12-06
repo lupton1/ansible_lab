@@ -1,5 +1,7 @@
 ---
 
+# RUN ALL OF THE ROLES
+
 - hosts: all 
   become: true 
   roles:
@@ -7,5 +9,4 @@
     - elastic_search
     - kibana
     - logstash
-   # - nginx
 

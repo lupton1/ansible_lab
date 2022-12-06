@@ -1,5 +1,7 @@
 ---
 
+# RESTART KIBANA CONTAINER
+
 - name: Restart logstash container 
   docker_container: 
     name: "{{ logstash_hostname }}"

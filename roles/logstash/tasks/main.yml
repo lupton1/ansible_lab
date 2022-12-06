@@ -1,5 +1,7 @@
 ---
 
+# CREATE AND START LOGSTASH CONTAINER
+
 - name: Ensure that logstash pipelines conf dir exists 
   file:
     path: "{{ logstash_conf_dir }}/pipeline"
