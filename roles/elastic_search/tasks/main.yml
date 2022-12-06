@@ -47,6 +47,7 @@
     - 9200:9200
     networks:
     - name: "{{ network_name }}"
+    state: started
 
 - name: es02 node 
   docker_container: 
@@ -62,6 +63,7 @@
     - "es02data:/usr/share/elasticsearch/data"
     networks:
     - name: "{{ network_name }}"
+    state: started
 
 - name: es03 node 
   docker_container: 
@@ -77,6 +79,7 @@
     - "es02data:/usr/share/elasticsearch/data"
     networks:
     - name: "{{ network_name }}"
+    state: started
 
 #- debug:
 #    msg: >
