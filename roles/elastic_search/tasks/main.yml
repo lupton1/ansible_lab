@@ -1,85 +1,101 @@
 ---
 
+# name: Create elastic search volume 
+#  docker_volume:
+#    name: esdata 
+#    driver: local
+
 - name: Create elastic search volume 
   docker_volume:
-    name: esdata 
+    name: es01data 
     driver: local
+
+- name: Create elastic search volume 
+  docker_volume:
+    name: es02data 
+    driver: local
+
+- name: Create elastic search volume 
+  docker_volume:
+    name: es03data 
+    driver: local
+
 
 - name: Create Network esnet
   docker_network:
     name: "{{ network_name }}"    
 
-- name: Start elastic search container
-  docker_container:
-    name: "{{ elasticsearch_hostname }}"
+#- name: Start elastic search container
+#  docker_container:
+#    name: "{{ elasticsearch_hostname }}"
+#    image: "{{ elasticsearch_image }}"
+#    env:
+#      discovery.type: "single-node"
+#      ES_JAVA_opts: "-Xms512m"
+#      xpack.security.enabled: "false"
+#    volumes:
+#    - "esdata:/usr/share/elasticsearch/data"
+#    ports:
+#   - 9200:9200
+#    #ulimits:
+#    #- nofile:655355:65535
+#    networks:
+#    - name: "{{ network_name }}"
+#   state: started
+      #  log_driver: "{{ log_driver }}"
+      #  log_options:
+      #    max-size: "{{ log_max_size }}"
+      #    max-file: "{{ log_max_file }}"
+
+- name: es01 node 
+  docker_container: 
+    name: "es01"
     image: "{{ elasticsearch_image }}"
     env:
-      discovery.type: "single-node"
-      ES_JAVA_opts: "-Xms512m"
-      xpack.security.enabled: "false"
+      node.name: es01
+      cluster.name: es-docker-cluster
+      discovery.seed_hosts: es02,es03
+      cluster.initial_master_nodes: es01,es02,es03
+      ES_JAVA_OPTS: "-Xmx512m"
     volumes:
-    - "esdata:/usr/share/elasticsearch/data"
+    - "es01data:/usr/share/elasticsearch/data"
     ports:
     - 9200:9200
-    #ulimits:
-    #- nofile:655355:65535
     networks:
     - name: "{{ network_name }}"
     state: started
-#    log_driver: "{{ log_driver }}"
-#    log_options:
-#      max-size: "{{ log_max_size }}"
-#      max-file: "{{ log_max_file }}"
 
-#- name: es01 node 
-#  docker_container: 
-#    name: "es01"
-#    image: "{{ elasticsearch_image }}"
-#    env:
-#      node.name: es01
-#      cluster.name: es-docker-cluster
-#      discovery.seed_hosts: es02,es03
-#      cluster.initial_master_nodes: es01,es02,es03
-#      ES_JAVA_OPTS: "-Xmx512m"
-#    volumes:
-#    - "es01data:/usr/share/elasticsearch/data"
-#    ports:
-#    - 9200:9200
-#    networks:
-#    - name: "{{ network_name }}"
-#    state: started
+- name: es02 node 
+  docker_container: 
+    name: "es02"
+    image: "{{ elasticsearch_image }}"
+    env:
+      node.name: es02
+      cluster.name: es-docker-cluster
+      discovery.seed_hosts: es01,es03
+      cluster.initial_master_nodes: es01,es02,es03
+      ES_JAVA_OPTS: "-Xmx512m"
+    volumes:
+    - "es02data:/usr/share/elasticsearch/data"
+    networks:
+    - name: "{{ network_name }}"
+    state: started
 
-#- name: es02 node 
-#  docker_container: 
-#    name: "es02"
-#    image: "{{ elasticsearch_image }}"
-#    env:
-#      node.name: es02
-#      cluster.name: es-docker-cluster
-#      discovery.seed_hosts: es01,es03
-#      cluster.initial_master_nodes: es01,es02,es03
-#      ES_JAVA_OPTS: "-Xmx512m"
-#    volumes:
-#    - "es02data:/usr/share/elasticsearch/data"
-#    networks:
-#    - name: "{{ network_name }}"
-#    state: started
-
-#- name: es03 node 
-#  docker_container: 
-#    name: "es03"
-#    image: "{{ elasticsearch_image }}"
-#    env:
-#      node.name: es03
-#      cluster.name: es-docker-cluster
-#      discovery.seed_hosts: es01,es03
-#      cluster.initial_master_nodes: es01,es02,es03
-#      ES_JAVA_OPTS: "-Xmx512m"
-#    volumes:
-#    - "es02data:/usr/share/elasticsearch/data"
-#    networks:
-#    - name: "{{ network_name }}"
-#    state: started
+- name: es03 node 
+  docker_container: 
+    name: "es03"
+    image: "{{ elasticsearch_image }}"
+    env:
+      node.name: es03
+      cluster.name: es-docker-cluster
+      discovery.seed_hosts: es01,es03
+      cluster.initial_master_nodes: es01,es02,es03
+      ES_JAVA_OPTS: "-Xmx512m"
+    volumes:
+    - "es02data:/usr/share/elasticsearch/data"
+    networks:
+    - name: "{{ network_name }}"
+    state: started
 
 #- debug:
 #    msg: >
