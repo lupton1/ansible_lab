@@ -5,17 +5,17 @@
 #    name: esdata 
 #    driver: local
 
-- name: Create elastic search volume 
+- name: Create elastic search volume es01
   docker_volume:
     name: es01data 
     driver: local
 
-- name: Create elastic search volume 
+- name: Create elastic search volume es02
   docker_volume:
     name: es02data 
     driver: local
 
-- name: Create elastic search volume 
+- name: Create elastic search volume es03
   docker_volume:
     name: es03data 
     driver: local
